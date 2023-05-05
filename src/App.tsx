@@ -5,7 +5,7 @@ import { defaultTheme } from "./styles/themes/default"
 import { Transactions } from "./pages/Transactions/index"
 
 
-function App() {
+export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle/>
@@ -13,5 +13,3 @@ function App() {
     </ThemeProvider>
   )
 }
-
-export default App
