@@ -3,19 +3,19 @@
         {
             "id": "1",
             "description": "Desenvolvimento de Site",
-            "type": "Income",
+            "type": "income",
             "category": "Venda",
-            "price": "14.000",
-            "createdAt": "2023-05-06T00:32:03.247Z"
+            "price": 4000,
+            "createdAt": "2023-04-06T00:32:03.247Z"
 
         },
 
         {
             "id": "2",
             "description": "Hamburguer",
-            "type": "Outcome",
+            "type": "outcome",
             "category": "Alimentação",
-            "price": "50",
+            "price": 50,
             "createdAt": "2023-05-06T00:32:03.247Z"
 
         }
