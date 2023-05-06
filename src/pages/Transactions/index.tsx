@@ -1,32 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { PriceHightLight, TransactionContainer, TransactionTable } from './styles'
 import { Header } from "../../components/Header/index";
 import { Summary } from "../../components/Summary/index";
 import { SearchForm } from './components/SearchForm/index';
 import { TransActionType } from '../../components/Modal/styles';
+import { TransActionsContext } from '../../context/TransActionsContext'
 
-interface TransActionsProps{
-    id: number;
-    description: string;
-    type: "income" | "outcome";
-    price: number;
-    category: string;
-    createdAt: string;
-}
 
 export function Transactions(){
-    const [transactions, setTransactions] = useState<TransActionsProps[]>([])
-    
-    useEffect(() => {
-        async function loadTransactions(){
-            const response = await fetch("http://localhost:3000/transactions")
-            const data = await response.json()
-            setTransactions(data)
-        }
-
-        loadTransactions()
-    }, [])
-
+    const { transactions } = useContext(TransActionsContext)
     return(
         <div>
             <Header/>
