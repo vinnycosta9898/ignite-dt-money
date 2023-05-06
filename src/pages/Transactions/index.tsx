@@ -3,7 +3,6 @@ import { PriceHightLight, TransactionContainer, TransactionTable } from './style
 import { Header } from "../../components/Header/index";
 import { Summary } from "../../components/Summary/index";
 import { SearchForm } from './components/SearchForm/index';
-import { TransActionType } from '../../components/Modal/styles';
 import { TransActionsContext } from '../../context/TransActionsContext';
 import { dateFormatter, priceFormatter } from '../../utils/Formatters';
 
