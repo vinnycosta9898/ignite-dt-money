@@ -1,9 +1,32 @@
+import { useState, useEffect } from 'react';
 import { PriceHightLight, TransactionContainer, TransactionTable } from './styles'
 import { Header } from "../../components/Header/index";
 import { Summary } from "../../components/Summary/index";
 import { SearchForm } from './components/SearchForm/index';
+import { TransActionType } from '../../components/Modal/styles';
+
+interface TransActionsProps{
+    id: number;
+    description: string;
+    type: "income" | "outcome";
+    price: number;
+    category: string;
+    createdAt: string;
+}
 
 export function Transactions(){
+    const [transactions, setTransactions] = useState<TransActionsProps[]>([])
+    
+    useEffect(() => {
+        async function loadTransactions(){
+            const response = await fetch("http://localhost:3000/transactions")
+            const data = await response.json()
+            setTransactions(data)
+        }
+
+        loadTransactions()
+    }, [])
+
     return(
         <div>
             <Header/>
@@ -12,28 +35,22 @@ export function Transactions(){
                 <SearchForm/>
                 <TransactionTable>
                     <tbody>
-                        <tr>
-                            <td width="50%">Desenvolvimento de site</td>
-                            <td>
-                                <PriceHightLight variant="income">
-                                    R$ 12.000,00
-                                </PriceHightLight>
-                            </td>
-                            <td>Venda</td>
-                            <td>12/04/2023</td>
-                        </tr>
-
-                        <tr>
-                            <td width="50%">Hamburguer</td>
-                            <td>
-                                <PriceHightLight variant="outcome">
-                                    R$ 12.000,00
-                                </PriceHightLight>
-                            </td>
-                            <td>Alimentacao</td>
-                            <td>12/04/2023</td>
-                        </tr>
-                        
+                        {transactions.map(transaction => {
+                            return(
+                                <>
+                                    <tr>
+                                        <td width="50%">{transaction.description}</td>
+                                    <td>
+                                        <PriceHightLight variant={transaction.type}>
+                                            {transaction.price}
+                                        </PriceHightLight>
+                                    </td>
+                                        <td> R$ {transaction.price}</td>
+                                        <td>{transaction.createdAt}</td>
+                                    </tr>
+                                </>
+                            )
+                        })}
                     </tbody>
                 </TransactionTable>
             </TransactionContainer>
