@@ -1,10 +1,14 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { CloseButton, Content, OverLay, TransActionType, TransActionTypeButton } from './styles';
-import { X } from 'phosphor-react';
-import { ArrowCircleDown, ArrowCircleUp } from 'phosphor-react';
+import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react';
+
 import { Controller, useForm } from 'react-hook-form';
 import * as z from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import { api } from '../../lib/axios';
+import { useContext } from 'react';
+import { TransActionsContext } from '../../context/TransActionsContext';
 
 const newTransactionFormSchema = z.object({
     description: z.string(),
@@ -16,11 +20,14 @@ const newTransactionFormSchema = z.object({
 type NewTransActionFormInputs = z.infer<typeof newTransactionFormSchema>;
 
 export function Modal(){
+    const { createTransaction } = useContext(TransActionsContext);
+
     const { 
             control,
             register, 
             handleSubmit,
-            formState: { isSubmitting }
+            formState: { isSubmitting },
+            reset
           } = useForm<NewTransActionFormInputs>({
           resolver: zodResolver(newTransactionFormSchema),
           defaultValues: {
@@ -28,9 +35,15 @@ export function Modal(){
           }
     })
 
-    async function createNewTransaction(data: NewTransActionFormInputs){
-        await new Promise(resolve => setTimeout(resolve, 2000))
-        console.log(data)
+    async function handleCreateNewTransaction(data: NewTransActionFormInputs){
+        const {description, price, category, type} = data
+        await createTransaction({
+            description, 
+            price,
+            category, 
+            type
+        })
+        reset();
     }
 
     return(
@@ -41,7 +54,7 @@ export function Modal(){
                 <CloseButton asChild>
                     <X size={24}/>
                 </CloseButton>
-                <form onSubmit={handleSubmit(createNewTransaction)}>
+                <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
                     <input 
                         type="text"
                         placeholder="Descrição"
