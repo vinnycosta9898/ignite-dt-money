@@ -1,36 +1,44 @@
 {
   "transactions": [
     {
-      "id": "1",
       "description": "Desenvolvimento de Site",
-      "type": "income",
       "category": "Venda",
       "price": 4000,
-      "createdAt": "2023-04-06T00:32:03.247Z"
-    },
-    {
-      "id": "2",
-      "description": "Hamburguer",
-      "type": "outcome",
-      "category": "Alimentação",
-      "price": 50,
-      "createdAt": "2023-05-06T00:32:03.247Z"
-    },
-    {
-      "description": "Desenvolvimento de App ",
-      "category": "Venda",
-      "price": 4850,
       "type": "income",
-      "createdAt": "2023-05-12T14:09:06.591Z",
-      "id": "JomkD9y"
+      "createdAt": "2023-05-13T15:08:13.298Z",
+      "id": 1
     },
     {
-      "description": "Hamburguer Madero",
-      "category": "Alimentacao",
-      "price": 50,
+      "description": "Aluguel",
+      "category": "Passivo",
+      "price": 1850,
       "type": "outcome",
-      "createdAt": "2023-05-12T14:33:33.144Z",
-      "id": "ULet88s"
+      "createdAt": "2023-05-13T15:08:33.980Z",
+      "id": 2
+    },
+    {
+      "description": "Conta de Agua",
+      "category": "Passivo",
+      "price": 150,
+      "type": "outcome",
+      "createdAt": "2023-05-13T15:09:10.114Z",
+      "id": 3
+    },
+    {
+      "description": "Conta de Luz",
+      "category": "Passivo",
+      "price": 180,
+      "type": "outcome",
+      "createdAt": "2023-05-13T15:09:32.711Z",
+      "id": 4
+    },
+    {
+      "description": "Internet",
+      "category": "Passivo",
+      "price": 100,
+      "type": "outcome",
+      "createdAt": "2023-05-13T15:09:51.265Z",
+      "id": 5
     }
   ]
 }
