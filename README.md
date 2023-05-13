@@ -13,7 +13,6 @@
 ### ✔️ Zod
 
 # How to run
-
 ```
 # Clone this repository
 $ git clone https://github.com/vinnycosta9898/ignite-dt-money
